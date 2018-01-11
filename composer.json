@@ -1,0 +1,27 @@
+{
+  "name": "zongphp/route",
+  "description": "路由管理组件",
+  "keywords": [
+    "路由器",
+    "router"
+  ],
+  "license": "MIT",
+  "minimum-stability": "stable",
+  "require": {
+    "php": ">=5.4.0",
+    "zongphp/config": "~2.0",
+    "zongphp/cache": "~2.0",
+    "zongphp/request": "~2.0",
+    "zongphp/container": "~2.0",
+    "zongphp/curl": "~2.0",
+    "zongphp/middleware": "~2.0"
+  },
+  "autoload": {
+    "files": [
+      "src/helper.php"
+    ],
+    "psr-4": {
+      "zongphp\\route\\": "src"
+    }
+  }
+}
