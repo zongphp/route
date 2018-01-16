@@ -46,11 +46,18 @@ class Base
             $module                 = array_pop($info);
             $info[count($info) - 1] = ucfirst($info[count($info) - 1]);
             $action                 = Config::get('app.path').'\\'.$module.'\\controller\\'.$controller.'@'.$method;
+            define( 'MODULE', $module );
+      			define( 'CONTROLLER', $controller );
+      			define( 'ACTION', $method );
         } else {
             //默认控制器
             $class  = Config::get('http.default_controller');
+            $info                   = explode('\\', $class);
             $method = Config::get('http.default_action');
             $action = $class.'@'.$method;
+            define( 'MODULE', $info[1]);
+      			define( 'CONTROLLER', $info[3]);
+      			define( 'ACTION', $method );           
         }
         Route::any('.*', $action);
     }
