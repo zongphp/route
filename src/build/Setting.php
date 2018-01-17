@@ -53,7 +53,7 @@ class Setting {
 		$route         = trim( $route, '/' );
 		$this->route[] = [
 			'method'   => 'controller',
-			'route'    => $this->prefix . $route . '/{method}',
+			'route'    => $this->prefix . $route . '/{method}(\.\w+)?',
 			'callback' => $param,
 			'regexp'   => '',
 			'args'     => [ ]
@@ -72,19 +72,19 @@ class Setting {
 	 */
 	public function resource( $route, $controller ) {
 		$route = trim( $route, '/' );
-		$this->get( "$route", $controller . '/index' );
+		$this->get( "$route", $controller . '@index' );
 		//添加文章视图
-		$this->get( "$route/create", $controller . '/create' );
+		$this->get( "$route/create", $controller . '@create' );
 		//保存
-		$this->post( "$route", $controller . '/store' );
+		$this->post( "$route", $controller . '@store' );
 		//显示文章
-		$this->get( "$route/{id}", $controller . '/show' );
+		$this->get( "$route/{id}", $controller . '@show' );
 		//编辑文章视图
-		$this->get( "$route/{id}/edit", $controller . '/edit' );
+		$this->get( "$route/{id}/edit", $controller . '@edit' );
 		//更新
-		$this->put( "$route/{id}", $controller . '/update' );
+		$this->put( "$route/{id}", $controller . '@update' );
 		//删除文章
-		$this->delete( "$route/{id}", $controller . '/destroy' );
+		$this->delete( "$route/{id}", $controller . '@destroy' );
 
 		return $this;
 	}
