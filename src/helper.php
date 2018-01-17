@@ -1,5 +1,5 @@
 <?php
-if ( ! function_exists('action')) {
+if ( ! function_exists('doAction')) {
     /**
      * 执行控制器方法
      *
@@ -8,7 +8,7 @@ if ( ! function_exists('action')) {
      *
      * @return mixed
      */
-    function action($controller, $action)
+    function doAction($controller, $action)
     {
         return \zongphp\route\Route::executeControllerAction($controller.'@'.$action);
     }
